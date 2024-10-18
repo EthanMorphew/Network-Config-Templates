@@ -1,7 +1,7 @@
 # Network-Config-Templates
-A repository of various config snippets that other may find useful
+A repository of various config snippets
 
-Most of these are based on labs completed, the snippets are **NOT** complete (some might be) but provide a good basis to complete a task
+Most of these are based on labs I have completed, the snippets are **NOT** all complete (some might be) but provide a good basis to complete a task
 
 So far i've added various snippets from Nokia routers (SR7750 and SR7250) and various cisco switches and routers
 
