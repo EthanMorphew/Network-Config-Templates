@@ -1,0 +1,29 @@
+##### Can reuse existing? YES! #####
+configure 
+    service 
+        sdp {SDP Number} mpls create
+            far-end {Far end system address}
+            ldp
+        exit
+    exit
+exit
+
+##### Can use existing? #####
+configure
+    service
+        customer {Customer Number} create
+        exit
+    exit
+exit
+
+##### Definetly New #####
+configure
+    service
+        epipe {E-pipe Number} customer {Customer Number} create
+        sap {Desired SAP interface EX: 1/1/2:20 for port 1/1/2 w/ qtag 20} create
+        exit
+        spoke-sdp {SDP Number}:{Virtual Circuit Number} create
+        exit
+        no shutdown
+    exit
+exit
