@@ -1,0 +1,12 @@
+configure
+    router
+        ldp 
+            interface-parameters
+                interface "{Interface Name}"
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+exit
