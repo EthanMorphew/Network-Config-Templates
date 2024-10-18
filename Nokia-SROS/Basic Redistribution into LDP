@@ -1,0 +1,17 @@
+configure
+    router
+        policy-options
+            begin
+                policy-statement RedistributeToLDP
+                    entry 10
+                            action accept
+                        exit
+                    exit
+                exit
+            commit
+        exit
+        ldp
+            export RedistributeToLDP
+        exit
+    exit
+exit
