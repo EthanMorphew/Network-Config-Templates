@@ -1,0 +1,12 @@
+configure
+    router
+        ldp
+            targeted-session
+                peer {peer system address}
+                    tunneling
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+exit
