@@ -1,0 +1,22 @@
+configure terminal
+	#Setup HSRP on an interface
+	int g0/0/0
+		standby 10 ip {virtual IP address}
+		standby 10 priority 150
+		standby 10 preempt
+	exit
+	standby 10 authentication md5 key-string cisco123!
+	# Create SLA
+	ip sla 10
+		icmp-echo 209.165.200.254
+		frequency 5
+	exit
+	ip sla schedule 10 life forever start-time now
+	# Create track
+		track 100 ip sla 10 reachability
+	# Apply Track
+	int g0/0/0
+		standby 10 track 100 decrement 70
+	exit
+exit
+	
