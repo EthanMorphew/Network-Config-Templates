@@ -3,6 +3,10 @@ A repository of various config snippets that other may find useful
 
 Most of these are based on labs completed, the snippets are **NOT** complete (some might be) but provide a good basis to complete a task
 
+So far i've added various snippets from Nokia routers (SR7750 and SR7250) and various cisco switches and routers
+
+The Nokia configs are performed in the Classic CLI mode rather than MD-CLI
+
 # Todo:
 - Add GLBP
 - Add VRRP
