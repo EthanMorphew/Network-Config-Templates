@@ -1,0 +1,9 @@
+        interface "system"
+            address x.x.x.x/x
+            no shutdown
+        exit
+        interface "Name-Your-Interface"
+            address x.x.x.x/x
+            port x/x/x
+            no shutdown
+        exit
