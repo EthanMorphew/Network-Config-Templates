@@ -1,0 +1,15 @@
+configure 
+    router 
+        router-id {x.x.x.x, usually the same as your system address}
+        # OSPF configs
+        ospf 
+            area {Area Number}
+                interface "{Interface Name}" 
+                exit
+                interface "{Interface Name}"
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+exit
