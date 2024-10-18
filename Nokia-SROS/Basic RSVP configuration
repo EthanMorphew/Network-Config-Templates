@@ -1,0 +1,39 @@
+configure
+    router
+
+        #Enable MPLS on desired interfaces
+        mpls
+            interface system
+            exit
+            interface toR5
+            exit
+            no shutdown
+        exit
+
+        #Enable RSVP on desired interfaces
+        rsvp
+            interface system
+            exit
+            interface toR5
+            exit
+            no shutdown
+        exit
+
+        #Create Basic LSPs
+        mpls
+            path "loose"
+                no shutdown
+            exit
+            lsp "PathToR10"
+                to {destination router system address}
+                primary "loose"
+                exit
+                no shutdown
+            exit
+            lsp "PathToR11"
+                to  to {destination router system address}
+                primary "loose"
+                exit
+                no shutdown
+            exit
+        exit
