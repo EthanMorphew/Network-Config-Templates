@@ -1,0 +1,21 @@
+configure
+    router
+        autonomous-system 65540
+        bgp
+            group "iBGP-Peers"
+                neighbor {neighbor address}
+                    peer-as {AS# should match local AS for iBGP}
+                    #Allow eBGP routes to be advertised and reachable for iBGP router using:
+                    next-hop-self
+                    exit
+                exit
+            exit
+            group "eBGP-Peers"
+                neighbor {neighbor address}
+                    peer-as {AS# should NOT match local AS for eBGP}
+                    exit
+                exit
+            exit
+        exit
+    exit
+exit
