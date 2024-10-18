@@ -1,1 +1,32 @@
-
+configure 
+    router 
+        ospf 
+            traffic-engineering
+        exit
+    exit
+    router
+        if-attribute
+            admin-group green value 1
+            admin-group red value 2
+        exit
+        mpls
+            interface {interface name}
+                admin-group "green"
+            no shutdown
+        exit
+        mpls
+            path "loose"
+                no shutdown
+            exit
+            lsp "Path_GREEN-NORED"
+                path-computation-method local-cspf
+                to {Destination router system address}
+                primary "loose"
+                    include "green"
+                      exclude "red"
+                exit
+                no shutdown
+            exit
+        exit
+    exit
+exit
