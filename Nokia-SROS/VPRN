@@ -1,0 +1,54 @@
+configure
+    router
+        # Setup Basic bgp
+        bgp
+            router-id 10.10.10.1
+            group "MP-BGP"
+                family vpn-ipv4
+                peer-as 6446
+                neighbor 10.10.10.2
+                    local-address 10.10.10.1
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+    # Configure Service
+    service
+        customer 1 name "1" create
+            description "Default customer"
+        exit
+        vprn 110 name "110" customer 1 create
+            router-id 10.10.10.1
+            autonomous-system 6446
+            interface "toCE1" create
+                description "VPRN interface to R3"
+                address 10.1.3.1/24
+                sap 1/1/3:110 create
+                exit
+            exit
+            bgp-ipvpn
+                mpls
+                    auto-bind-tunnel
+                        resolution any
+                    exit
+                    route-distinguisher 6446:110
+                    vrf-target target:6446:110
+                    no shutdown
+                exit
+            exit
+            bgp
+                group "E-BGP"
+                    # You will need to create an export policy
+                    export "mpbgp-to-bgp"
+                    neighbor 10.1.3.3
+                        local-address 10.1.3.1
+                        peer-as 6447
+                    exit
+                exit
+                no shutdown
+            exit
+            no shutdown
+        exit
+    exit
+exit
