@@ -1,0 +1,16 @@
+configure service 
+    sdp 1000 mpls create
+        far-end {far end address}
+        ldp
+        no shutdown
+    exit
+    ies 1000 customer 1 create
+        interface "IES-1000" create
+        spoke-sdp 1000:1000 create 
+            no shutdown
+        exit
+        address {x.x.x.x/x IES address}
+        no shutdown
+        #ip-mtu 1500 !make MTU the same as access port mtu
+    exit
+exit
