@@ -1,0 +1,31 @@
+configure service
+    #Create SDPs if neccessary
+    sdp 100 mpls create
+        far-end 10.10.10.6
+        ldp
+        no shutdown
+    exit
+    sdp 200 mpls create
+        far-end 10.10.10.1
+        ldp
+        no shutdown
+    exit
+    sdp 300 mpls create
+        far-end 10.10.10.2
+        ldp
+        no shutdown
+    exit
+    #Create VPLS service
+    vpls 10 customer 1 create
+        mesh-sdp 100 create
+            no shutdown
+        exit
+        mesh-sdp 200 create
+            no shutdown
+        exit
+        mesh-sdp 300 create
+            no shutdown
+        exit
+        no shutdown
+    exit
+exit
